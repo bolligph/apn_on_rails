@@ -55,7 +55,8 @@ class APN::App < APN::Base
           end
         end
       rescue Exception => e
-        log_connection_exception(e)
+        p e.message
+        Exceptional.handle(e, "Exception while sending push notifications to Apple.")
       end
     # end   
   end
@@ -143,9 +144,9 @@ class APN::App < APN::Base
   end
   
   
-  protected
-  def log_connection_exception(ex)
-    puts ex.message
-  end
+  # protected
+  # def log_connection_exception(ex)
+  #   puts ex.message
+  # end
     
 end
